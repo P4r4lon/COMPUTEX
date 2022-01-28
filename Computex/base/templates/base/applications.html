@@ -1,0 +1,32 @@
+{% extends 'base/layout.html' %} {% load static %} {% block content %}
+<div class="wrapper row3 ">
+    <section class="hoc container clear">
+        <!-- ################################################################################################ -->
+        <div class="sectiontitle">
+            <h6 class="heading" >Страница с информацией о заявках
+            </h6>
+            <h6><form method="get" action="{% url 'applications' filter='name' %}">
+	    	    <input type="text" class="form-control" placeholder="Поиск" name="search">
+		    </form></h6>
+		    <div class="sort">
+		        <button><a href="{% url 'applications' filter='date' %}">дата<i class="fas fa-arrow-alt-circle-up"></i></a></button>
+                <button><a href="{% url 'applications' filter='-date' %}">дата<i class="fas fa-arrow-alt-circle-down"></i></a></button>
+            	<button><a href="{% url 'applications' filter='name' %}">имя<i class="fas fa-arrow-alt-circle-up"></i></a></button>
+                <button><a href="{% url 'applications' filter='-name' %}">имя<i class="fas fa-arrow-alt-circle-down"></i></a></button>
+            </div>
+        </div>
+            <hr>
+            {% for app in application %}
+            <div class="txtwrap hoc clear " style="padding-left: 5px;">
+                <p style="font-weight: bold;">ФИО заказчика: {{app.name}}</p>
+                <p>стенд: {{app.stand}}</p>
+                <p>дата создания заявки: {{app.date}}</p>
+            </div>
+            <hr>
+            {% endfor %}
+
+
+        <!-- ################################################################################################ -->
+    </section>
+</div>
+{% endblock %} {% block title %}Suppliers page{% endblock %}

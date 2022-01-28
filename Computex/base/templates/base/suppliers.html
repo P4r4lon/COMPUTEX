@@ -1,0 +1,24 @@
+{% extends 'base/layout.html' %} {% load static %} {% block content %}
+<div class="wrapper row3 ">
+    <section class="hoc container clear">
+        <!-- ################################################################################################ -->
+        <div class="sectiontitle">
+            <h6 class="heading">Страница с информацией о изготовителях</h6>
+            {%if request.user.is_authenticated and request.user.is_staff %}
+            <p><a href="{% url 'suppliers_create' %}"><i class="far fa-plus-square icons"></a></i></p>
+            {% endif %}
+        </div>
+            <hr>
+            {% for sup in supplier %}
+            <div class="txtwrap hoc clear " style="padding-left: 5px;">
+                <p style="font-weight: bold;">® Производитель: {{sup.name}}  {%if request.user.is_authenticated and request.user.is_staff %}<a href="{% url 'suppliers_update' sup.id %}"><i class="fas fa-cog icons"></i></a> <a href="{% url 'suppliers_delete' sup.id %}"><i class="far fa-trash-alt icons"></i></a>{% endif %}</p>
+                <p>email: {{sup.email}}</p>
+            </div>
+            <hr>
+            {% endfor %}
+
+
+        <!-- ################################################################################################ -->
+    </section>
+</div>
+{% endblock %} {% block title %}Suppliers page{% endblock %}

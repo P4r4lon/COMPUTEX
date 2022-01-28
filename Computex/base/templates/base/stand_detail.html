@@ -1,0 +1,38 @@
+{% extends 'base/layout.html' %} {% load static %} {% block content %}
+<div class="wrapper row3">
+    <section class="hoc container clear">
+        <!-- ################################################################################################ -->
+        <div class="sectiontitle">
+            <h6 class="heading">Стенд №{{st.id}}</h6>
+            <p>Возможно оформление заявки:</p>
+            <a href="{% url 'app_create' st.id %}"><button style="display: flex; margin:auto; ">Оформить</button></a>
+        </div>
+        <div class="group latest">
+
+            <article class="one_third first">
+                <figure>
+                    <img src="{% static 'base/img/stand.jpg' %}" alt="">
+
+                </figure>
+                <div class="txtwrap">
+                    <h4 class="heading"> Цена: {{st.price}}</h4>
+                    <p>Площадь: {{st.square}} м²</p>
+                    <p>Производитель: {{st.supplier}}</p>
+                    <p>Количество: {{st.amount}}</p>
+
+                    {% if st.is_active %}
+                    {% else %}
+                    <p>не активен</p>
+                    {% endif %}
+                </div>
+
+            </article>
+
+
+        </div>
+
+        <!-- ################################################################################################ -->
+        <div class="clear"></div>
+    </section>
+</div>
+{% endblock %} {% block title %}Stands page{% endblock %}

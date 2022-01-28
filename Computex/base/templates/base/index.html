@@ -1,0 +1,13 @@
+{% extends 'base/layout.html' %} {% load static %} {% block content %}
+<div class="wrapper overlay">
+    <article id="pageintro" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <div class="transbox">
+            <h3 class="heading">Computex Taipei</h3>
+            <p>Приложение позволяет автоматизировать работу компании, орагнизаующей выставки инновационных технологий. Для использования полного функционала требуется авторизация.</p>
+        </div>
+        <footer><a class="btn" href="/admin/login/?next=/applications">Авторизация</a></footer>
+        <!-- ################################################################################################ -->
+    </article>
+</div>
+{% endblock %} {% block title %}Main page{% endblock %}

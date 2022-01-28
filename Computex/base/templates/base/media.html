@@ -1,0 +1,23 @@
+{% extends 'base/layout.html' %} {% load static %} {% block content %}
+<div class="wrapper row3 ">
+    <section class="hoc container clear">
+        <!-- ################################################################################################ -->
+        <div class="sectiontitle">
+            <h6 class="heading">Страница с информацией о СМИ партнерах</h6>
+             {%if request.user.is_authenticated and request.user.is_staff %}
+            <p><a href="{% url 'media_create' %}"><i class="far fa-plus-square icons"></a></i></p>
+            {% endif %}
+        </div>
+            <hr>
+            {% for m in media %}
+            <div class="txtwrap hoc clear " style="padding-left: 5px;">
+                <p style="font-weight: bold;">Наименование СМИ: {{m.name}}  {%if request.user.is_authenticated and request.user.is_staff %}<a href="{% url 'media_update' m.id %}"><i class="fas fa-cog icons"></i></a> <a href="{% url 'media_delete' m.id %}"><i class="far fa-trash-alt icons"></i></a>{% endif %}</p>
+            </div>
+            <hr>
+            {% endfor %}
+
+
+        <!-- ################################################################################################ -->
+    </section>
+</div>
+{% endblock %} {% block title %}Suppliers page{% endblock %}

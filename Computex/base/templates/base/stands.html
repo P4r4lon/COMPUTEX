@@ -1,0 +1,36 @@
+{% extends 'base/layout.html' %} {% load static %} {% block content %}
+<div class="wrapper row3">
+    <section class="hoc container clear">
+        <!-- ################################################################################################ -->
+        <div class="sectiontitle">
+            <h6 class="heading">Информация о стендах</h6>
+            <p>На данной странице вы можете оформить заявку на стенд</p>
+        </div>
+        <div class="group latest">
+            {% for st in stands %}
+            <article class="one_third first">
+                <figure>
+                    {% if st.is_active %}
+                    <a href="{% url 'stands_view' st.id %}"><img src="{% static 'base/img/stand.jpg' %}" alt=""></a>
+                    {% else %}
+                    <img src="{% static 'base/img/stand.jpg' %}" alt=""> {% endif %}
+                </figure>
+                <div class="txtwrap">
+                    <h4 class="heading">Стенд №{{st.id}}</h4>
+                    <p>Площадь: {{st.square}} м²</p>
+                    <p>Цена: {{st.price}}$</p>
+
+                    {% if st.is_active %}
+                    <p style="font-weight: bold;">доступен &#9745;</p>
+                    {% else %}
+                    <p style="font-weight: bold;">не активен &#9746;</p>
+                    {% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        <!-- ################################################################################################ -->
+        <div class="clear"></div>
+    </section>
+</div>
+{% endblock %} {% block title %}Stands page{% endblock %}

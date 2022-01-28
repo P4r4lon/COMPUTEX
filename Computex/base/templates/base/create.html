@@ -1,0 +1,20 @@
+{% extends 'base/layout.html' %} {% load static %} {% block content %}
+<div class="wrapper row3">
+    <section class="hoc container clear">
+        <!-- ################################################################################################ -->
+        <div class="sectiontitle">
+            <h6 class="heading">Форма добавления/обновления данных</h6>
+            <p></p>
+        </div>
+        <div class="group latest">
+            <article class="one_third first" style="padding:5px; margin-left: 10px">
+            <form method="POST" class="client-form">{% csrf_token %} {{ form.as_p }}
+                <button style="display: flex; margin:auto; ">Сохранить</button>
+            </form>
+            </article>
+        </div>
+        <!-- ################################################################################################ -->
+        <div class="clear"></div>
+    </section>
+</div>
+{% endblock %} {% block title %}application page{% endblock %}

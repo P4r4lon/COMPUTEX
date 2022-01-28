@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'base/css/main.css' %}">
+    <script src="https://kit.fontawesome.com/776b705857.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bgded">
+        <div class="wrapper row1 overlay">
+            <header id="header" class="hoc clear">
+                <div id="logo" class="fl_left">
+                    <h1><a href="{% url 'home' %}">Computex</a></h1>
+                </div>
+                <nav id="mainav" class="fl_right">
+                    <ul class="clear">
+                        <li><a href="{% url 'home' %}">Главная</a></li>
+                        <li><a href="{% url 'stands' %}">Стенды</a>
+                            <li><a href="{% url 'suppliers' %}">Производители</a></li>
+                            <li><a href="{% url 'applications' filter='-date' %}">Заявки</a></li>
+                            <li><a href="{% url 'media' %}">Медиа</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+        <!-- ################################################################################################ -->
+        {% block content %} {% endblock %}
+        <!-- ################################################################################################ -->
+    </div>
+</body>
+
+</html>
